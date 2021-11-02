@@ -49,6 +49,28 @@ FROM age_ml.shortest_path('reddit_hyperlinks');
 This function will compute the shortest path between two vertices
 
 
+## Neighborhood
+
+#### Syntax
+```
+age_ml.neighborhood(graph_name)
+```
+#### Parameters
+
+| name | type | optional | description |
+| --- | --- | --- | --- |
+| graph_name | name  | false | The name of the graph to run neighborhood on |
+
+#### Returns
+
+Function returns a Table consisting of two columns:
+
+| name | type | description |
+| --- | --- | --- |
+| vertex | agtype | the vertex that the neighborhood is for |
+| neighborhood | agtype | An agtype list of vertices that are the vertex's neighboor |
+
+
 ## Triangles
 
 ### Directed Triangles
