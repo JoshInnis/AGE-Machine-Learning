@@ -1,5 +1,5 @@
 
-CREATE OR REPLACE FUNCTION ag_catalog.age_efficiency(graph_name name, label text DEFAULT NULL::text, properties agtype DEFAULT NULL::agtype)
+CREATE OR REPLACE FUNCTION ag_ml.age_efficiency(graph_name name, label text DEFAULT NULL::text, properties agtype DEFAULT NULL::agtype)
 RETURNS TABLE(start_vertex agtype, end_vertex agtype, efficiency agtype)
 LANGUAGE plpgsql
 AS $function$

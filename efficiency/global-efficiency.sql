@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION ag_catalog.age_global_efficiency(graph_name name, label text DEFAULT NULL::text, properties agtype DEFAULT NULL::agtype)
+CREATE OR REPLACE FUNCTION ag_ml.age_global_efficiency(graph_name name, label text DEFAULT NULL::text, properties agtype DEFAULT NULL::agtype)
 RETURNS agtype
 LANGUAGE plpgsql
 AS $function$
