@@ -9,14 +9,14 @@ Computes the average length of all shortest paths between all vertices in a grap
 ### Syntax
 
 ```
-ag_ml.average_shortest_path(graph_name, label, properties)
+age_ml.average_shortest_path(graph_name, label, properties)
 ```
 
 ### Parameters
 
 | name | type | optional | description |
 | --- | --- | --- | --- |
-| graph_name | name  | false | The name of the graph to run efficiency on |
+| graph_name | name  | false | The name of the graph to run average shortest path on |
 | label | text | true | Only edges of the specified label will be included in the analysis
 | properties | agtype | true | The passed in Agtype map will be used to filter edges that have matching properties. Any non map agtype values will throw an error. |
 
@@ -55,4 +55,23 @@ Function returns a Table consisting of three columns:
 ## Unweighted Local Efficiency
 
 ## Unweighted Global Efficiency
+
+Computes the average length of all shortest paths between all vertices in a graph.
+
+### Syntax
+
+```
+age_ml.global_efficiency(graph_name, label, properties)
+```
+
+### Parameters
+
+| name | type | optional | description |
+| --- | --- | --- | --- |
+| graph_name | name  | false | The name of the graph to run global efficiency on |
+| label | text | true | Only edges of the specified label will be included in the analysis
+| properties | agtype | true | The passed in Agtype map will be used to filter edges that have matching properties. Any non map agtype values will throw an error. |
+
+### Returns
+An Agtype Float or Integer
 
