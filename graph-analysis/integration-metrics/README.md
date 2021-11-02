@@ -2,7 +2,27 @@
 
 Functions used to measure how interconnected the vertices in a graph are.
 
-## Unwighted Average Shortest Path
+## Unweighted Average Shortest Path
+
+Computes the average length of all shortest paths between all vertices in a graph.
+
+### Syntax
+
+```
+ag_ml.average_shortest_path(graph_name, label, properties)
+```
+
+### Parameters
+
+| name | type | optional | description |
+| --- | --- | --- | --- |
+| graph_name | name  | false | The name of the graph to run efficiency on |
+| label | text | true | Only edges of the specified label will be included in the analysis
+| properties | agtype | true | The passed in Agtype map will be used to filter edges that have matching properties. Any non map agtype values will throw an error. |
+
+### Returns
+An Agtype Float or Integer
+
 
 ## Unweighted Efficiency
 
