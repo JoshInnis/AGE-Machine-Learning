@@ -25,7 +25,7 @@ BEGIN
 	);
 	RETURN QUERY EXECUTE sql;
 END
-$function$
+$function$;
 
 CREATE OR REPLACE FUNCTION age_ml.shortest_path(graph_name agtype, v1 agtype, v2 agtype)
 RETURNS agtype
