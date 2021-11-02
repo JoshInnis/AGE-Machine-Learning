@@ -14,18 +14,18 @@ age_ml._shortest_path(graph_name, label, properties)
 
 ### Parameters
 
-| name | type | required | default value | description |
-| --- | --- | --- | --- | --- |
-| graph_name | name  | yes | N/A | The name of the graph to run shortest path on | 
-| label | text | no | NULL | When the field is not NULL, only edges of the specified label will be included in the search |
-| properties | agtype | no | NULL | When the field is not NULL, the passed in Agtype map will be used to filter edges that have matching properties. Any non map agtype values will throw an error. |
+| name | type | optional | description |
+| --- | --- | --- | --- |
+| graph_name | name  | false | The name of the graph to run shortest path on | 
+| label | text | true | When the field is not NULL, only edges of the specified label will be included in the search. |
+| properties | agtype | true | When the field is not NULL, the passed in Agtype map will be used to filter edges that have matching properties. Any non map agtype values will throw an error. |
 
 ### Returns
 
 Function returns a Table consisting of three columns
 
 | name | type | description |
-| --- | --- |
+| --- | --- | --- |
 | start_vertex | agtype | the start vertex for the given path |
 | end_vertex | agtype | the end vertex for the given path |
 | edges | agtype | A agtype list containing the edges for the shortest path between the two vertices
