@@ -13,6 +13,6 @@ BEGIN
             a.start_vertex,
             a.end_vertex,
             agtype_in((1/(age_size(a.edges)::int::numeric))::varchar::cstring)
-	FROM ag_catalog.age_shortest_path(graph_name, label, properties) as a;
+	FROM age_ml.shortest_path(graph_name, label, properties) as a;
 END
 $function$;
