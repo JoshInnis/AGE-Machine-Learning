@@ -26,6 +26,29 @@ BEGIN
 END
 $function$
 
+CREATE OR REPLACE FUNCTION ag_catalog.age_shortest_path(graph_name agtype, v1 agtype, v2 agtype)
+RETURNS agtype
+LANGUAGE plpgsql
+VOLATILE
+AS $BODY$
+DECLARE edges agtype;
+	sql VARCHAR;
+BEGIN
+	
+	sql := format('SELECT *
+		FROM cypher(''%s''::name, $$
+			MATCH (v1)-[e*]->(v2)
+			WHERE id(v1) = %s AND id(v2) = %s
+			RETURN min(e)
+		$$) AS (a agtype);',
+			substring(graph_name::varchar, 2,ag_catalog.age_size(graph_name)::int)::name, v1, v2);
+	EXECUTE sql
+	INTO edges;
+	RETURN edges;
+END
+$BODY$;
+
+
 CREATE OR REPLACE FUNCTION ag_catalog.age_average_shortest_path(graph_name name, label text DEFAULT NULL::text, properties agtype DEFAULT NULL::agtype)+
 RETURNS agtype
 LANGUAGE plpgsql
