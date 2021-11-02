@@ -3,7 +3,7 @@ CREATE OR REPLACE FUNCTION age_ml.efficiency(graph_name name, label text DEFAULT
 RETURNS TABLE(start_vertex agtype, end_vertex agtype, efficiency agtype)
 LANGUAGE plpgsql
 AS $function$
-DECLARE	sql VARCHAR;
+DECLARE sql VARCHAR;
 BEGIN
 	load 'age';
 	SET search_path TO ag_catalog;
