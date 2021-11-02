@@ -9,7 +9,7 @@ This function will compute the shortest paths between to vertices for every pair
 ### Syntax
 
 ```
-age_ml._shortest_path(graph_name, label, properties)
+age_ml.shortest_path(graph_name, label, properties)
 ```
 
 ### Parameters
@@ -17,12 +17,12 @@ age_ml._shortest_path(graph_name, label, properties)
 | name | type | optional | description |
 | --- | --- | --- | --- |
 | graph_name | name  | false | The name of the graph to run shortest path on | 
-| label | text | true | When the field is not NULL, only edges of the specified label will be included in the search. |
-| properties | agtype | true | When the field is not NULL, the passed in Agtype map will be used to filter edges that have matching properties. Any non map agtype values will throw an error. |
+| label | text | true | Only edges of the specified label will be included in the search. |
+| properties | agtype | true | The passed in Agtype map will be used to filter edges that have matching properties. Any non map agtype values will throw an error. |
 
 ### Returns
 
-Function returns a Table consisting of three columns
+Function returns a Table consisting of three columns:
 
 | name | type | description |
 | --- | --- | --- |
@@ -38,7 +38,7 @@ When all edges are acceptable, the label and properties fields can be excluded f
 
 ```
 SELECT * 
-FROM age_ml._shortest_path('reddit_hyperlinks');
+FROM age_ml.shortest_path('reddit_hyperlinks');
 ```
 
 ## Shortest Path for a Single Path
