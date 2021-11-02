@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION ag_ml.shortest_path
+CREATE OR REPLACE FUNCTION age_ml.shortest_path
     (graph_name name, label text DEFAULT NULL::text, properties agtype DEFAULT NULL::agtype)
 RETURNS TABLE(start_vertex agtype, end_vertex agtype, edges agtype)
 LANGUAGE plpgsql
@@ -27,7 +27,7 @@ BEGIN
 END
 $function$
 
-CREATE OR REPLACE FUNCTION ag_ml.shortest_path(graph_name agtype, v1 agtype, v2 agtype)
+CREATE OR REPLACE FUNCTION age_ml.shortest_path(graph_name agtype, v1 agtype, v2 agtype)
 RETURNS agtype
 LANGUAGE plpgsql
 VOLATILE
