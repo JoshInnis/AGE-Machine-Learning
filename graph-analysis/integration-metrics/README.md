@@ -54,6 +54,34 @@ Function returns a Table consisting of three columns:
 
 ## Unweighted Local Efficiency
 
+
+Local Efficiecy is the measure of the average efficiency of a vertex's neighbors.
+
+### Syntax
+
+```
+age_ml.efficency(graph_name, label, properties)
+```
+
+### Parameters
+
+| name | type | optional | description |
+| --- | --- | --- | --- |
+| graph_name | name  | false | The name of the graph to run local efficiency on |
+| label | text | true | Only edges of the specified label will be included in the analysis
+| properties | agtype | true | The passed in Agtype map will be used to filter edges that have matching properties. Any non map agtype values will throw an error. |
+
+### Returns
+
+Function returns a Table consisting of two columns:
+
+| name | type | description |
+| --- | --- | --- |
+| vertex | agtype | The start vertex for the given path. |
+| efficiency | agtype | A agtype numeric representing the efficiency of the two vertices. |
+
+
+
 ## Unweighted Global Efficiency
 
 Computes the average length of all shortest paths between all vertices in a graph.
