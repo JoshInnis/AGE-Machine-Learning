@@ -13,15 +13,8 @@ BEGIN
 			MATCH (a)-[]-(b)
 			WHERE a <> b
 			RETURN a, collect(b)
-		$$) as (a agtype, neighborhood agtype)
-		UNION ALL 
-		SELECT *
-		FROM cypher(''%s''::name, $$ 
-			MATCH (a)
-			WHERE NOT EXISTS ((a)-[]-())
-			RETURN a, []
-		$$) as (a agtype, neighborhood agtype);',
-		graph_name, graph_name);
+		$$) as (a agtype, neighborhood agtype)',
+		graph_name);
 	RETURN QUERY EXECUTE sql;
 END
 $function$;
