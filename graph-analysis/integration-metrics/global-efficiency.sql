@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION ag_ml.global_efficiency
+CREATE OR REPLACE FUNCTION age_ml.global_efficiency
     (graph_name name, label text DEFAULT NULL::text, properties agtype DEFAULT NULL::agtype)
 RETURNS agtype
 LANGUAGE plpgsql

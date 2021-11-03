@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION ag_ml.average_shortest_path
+CREATE OR REPLACE FUNCTION age_ml.average_shortest_path
    (graph_name name, label text DEFAULT NULL::text, properties agtype DEFAULT NULL::agtype)
 RETURNS agtype
 LANGUAGE plpgsql

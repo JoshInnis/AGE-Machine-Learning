@@ -11,7 +11,7 @@ SELECT * FROM cypher('reddit_hyperlinks', $$ MATCH(n) DETACH DELETE n $$) as (a 
 --SELECT create_elabel('reddit_hyperlinks','HYPERLINK');
 
 COPY RedditHyperLinks(source, target, post_id, post_time)
-FROM '/home/josh/Downloads/soc-redditHyperlinks-title.csv' -- replace this
+FROM '/home/josh/AGE-Machine-Learning/soc-redditHyperlinks-title.csv' -- replace this
 DELIMITER ','
 CSV HEADER;
 
@@ -24,7 +24,6 @@ CREATE INDEX red_target_idx ON RedditHyperLinks (target);
 
 ALTER TABLE RedditHyperLinks ADD COLUMN target_gid graphid;
 ALTER TABLE RedditHyperLinks ADD COLUMN source_gid graphid;
-
 
 CREATE TABLE subreddit_gids (subreddit VARCHAR, gid graphid);
 
@@ -84,7 +83,3 @@ SELECT setval('reddit_hyperlinks.subreddit_id_seq', currval('reddit_hyperlinks.s
 
 SELECT setval('reddit_hyperlinks."HYPERLINK_id_seq"', currval('reddit_hyperlinks."HYPERLINK_id_seq"') + (SELECT count(*) FROM RedditHyperLinks));
 
-
-SELECT count(*) FROM cypher('reddit_hyperlinks', $$ MATCH (n) RETURN n$$) as (a agtype);
-SELECT count(*) FROM cypher('reddit_hyperlinks', $$ MATCH (n)-[e]->(m) RETURN e$$) as (a agtype);
-SELECT count(*) FROM cypher('reddit_hyperlinks', $$ MATCH (n)-[e*]->(m) RETURN e$$) as (a agtype);
