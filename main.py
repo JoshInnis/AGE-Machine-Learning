@@ -26,5 +26,9 @@ if __name__ == '__main__':
             if filename.endswith(".sql"):
                 cursor.execute(open(os.path.join(directory, filename), "r").read())
 
+                directory = './graph-analysis/segregation-metrics'
+        for filename in os.listdir(directory):
+            if filename.endswith(".sql"):
+                cursor.execute(open(os.path.join(directory, filename), "r").read())
 
         cursor.execute(open("./datasets/reddit-hyperlinks/import.sql", "r").read())
