@@ -4,7 +4,7 @@ LANGUAGE plpgsql
 AS $function$
 DECLARE sql VARCHAR;
 BEGIN
-	sql := format('(a_%s)-[:edge]->(a_%s), (a_%s)<-[:edge]-(a_%s)', a, b, a, b);
+	sql := format(' (a_%s)-[:edge]->(a_%s), (a_%s)<-[:edge]-(a_%s)', a, b, a, b);
 	RETURN sql;
 END
 $function$;
@@ -21,16 +21,18 @@ BEGIN
 
 	PERFORM create_graph(graph_name);
 
-	sql := format('SELECT * FROM cypher(''%s'', $$ CREATE ', graph_name);
+	sql := format('SELECT * FROM cypher(''%s'', $$ CREATE', graph_name);
 
 	FOR i IN 1..n LOOP
 		FOR j IN i+1 .. n LOOP
-			SELECT concat(sql, age_ml.create_path_part(i, j))
+			SELECT concat(sql, age_ml.create_path_part(i, j), ',')
 			INTO sql;
 		END LOOP; 
 	END LOOP;
 
-	SELECT CONCAT(sql, '$$) AS (a agtype);')
+
+
+	SELECT CONCAT(LEFT(sql, length(sql)-1 ), '$$) AS (a agtype);')
 	INTO sql;
 
 	EXECUTE sql;
