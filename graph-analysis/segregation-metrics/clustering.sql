@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION age_ml.clustering
     (graph_name name)
-RETURNS TABLE(a agtype, cnt agtype)
+RETURNS TABLE(a agtype, clustering_coefficient agtype)
 LANGUAGE plpgsql
 AS $function$
 DECLARE sql VARCHAR;
