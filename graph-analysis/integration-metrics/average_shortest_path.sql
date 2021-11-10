@@ -14,4 +14,4 @@ BEGIN
         FROM age_shortest_path(graph_name, label, properties) as a;
         RETURN average_size;
 END
-$function$                                                                                                           
+$function$;
