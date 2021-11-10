@@ -11,7 +11,7 @@ BEGIN
 
 	sql := format('SELECT *
 		FROM cypher(''%s''::name, $$ 
-			MATCH (a)-[]-(b)-[]-(c)-[]->(a)
+			MATCH (a)-[]-(b)-[]-(c)-[]-(a)
 			RETURN a, b, c
 		$$) as (a agtype, b agtype, c agtype)',
 		graph_name);
