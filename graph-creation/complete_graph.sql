@@ -9,8 +9,30 @@ BEGIN
 END
 $function$;
 
+CREATE OR REPLACE FUNCTION age_ml.create_return_list(n int)
+RETURNS VARCHAR
+LANGUAGE plpgsql
+AS $function$
+DECLARE sql VARCHAR;
+BEGIN
+
+    sql := ' RETURN [';
+
+    FOR i in 1..n LOOP
+
+        SELECT CONCAT(sql, format(' a_%s,', i)) INTO sql;
+
+    END LOOP;
+
+
+    SELECT CONCAT(LEFT(sql, LENGTH(sql) - 1), '] ') INTO sql;
+
+    RETURN sql;
+END
+$function$;
+
 CREATE OR REPLACE FUNCTION age_ml.create_complete_graph(graph_name name, n int)
-RETURNS VOID
+RETURNS SETOF agtype
 LANGUAGE plpgsql
 AS $function$
 DECLARE trans agtype;
@@ -18,8 +40,6 @@ DECLARE trans agtype;
 BEGIN
         load 'age';
         SET search_path TO ag_catalog;
-
-	PERFORM create_graph(graph_name);
 
 	sql := format('SELECT * FROM cypher(''%s'', $$ CREATE', graph_name);
 
@@ -31,11 +51,13 @@ BEGIN
 	END LOOP;
 
 
+        
 
-	SELECT CONCAT(LEFT(sql, length(sql)-1 ), '$$) AS (a agtype);')
+
+	SELECT CONCAT(LEFT(sql, length(sql)-1 ), age_ml.create_return_list(n), '$$) AS (a agtype);')
 	INTO sql;
 
-	EXECUTE sql;
+	RETURN QUERY EXECUTE sql;
 
 END
 $function$;
